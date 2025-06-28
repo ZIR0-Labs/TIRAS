@@ -337,60 +337,375 @@
                 padding: 60px 0 50px;
             }
         }
+        /* AI Neural Network Animation */
+        .neural-network {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -2;
+            opacity: 0.1;
+        }
+
+        .neural-node {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #DC143C;
+            border-radius: 50%;
+            animation: pulse 3s infinite;
+        }
+
+        .neural-connection {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #DC143C, transparent);
+            animation: data-flow 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        @keyframes data-flow {
+            0% { opacity: 0; transform: scaleX(0); }
+            50% { opacity: 1; transform: scaleX(1); }
+            100% { opacity: 0; transform: scaleX(0); }
+        }
+
+        /* Military Grid Overlay */
+        .military-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(220, 20, 60, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(220, 20, 60, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: -1;
+            animation: grid-scan 10s infinite;
+        }
+
+        @keyframes grid-scan {
+            0%, 100% { opacity: 0.05; }
+            50% { opacity: 0.15; }
+        }
+
+        /* Command Console */
+        .command-console {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 300px;
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid #DC143C;
+            border-radius: 10px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            color: #00ff00;
+            font-size: 12px;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            transform: translateX(320px);
+            transition: transform 0.3s ease;
+        }
+
+        .command-console.active {
+            transform: translateX(0);
+        }
+
+        .console-header {
+            color: #DC143C;
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .status-line {
+            margin: 5px 0;
+            opacity: 0;
+            animation: type-in 0.5s forwards;
+        }
+
+        @keyframes type-in {
+            to { opacity: 1; }
+        }
+
+        .console-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(220, 20, 60, 0.9);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            z-index: 1001;
+            transition: all 0.3s ease;
+        }
+
+        .console-toggle:hover {
+            background: rgba(220, 20, 60, 1);
+            transform: scale(1.05);
+        }
+
+        /* AI Processing Indicator */
+        .ai-status {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #00ff00;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            border: 1px solid #DC143C;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .processing-dots::after {
+            content: '';
+            animation: dots 1.5s infinite;
+        }
+
+        @keyframes dots {
+            0% { content: ''; }
+            25% { content: '.'; }
+            50% { content: '..'; }
+            75% { content: '...'; }
+            100% { content: ''; }
+        }
+
+        /* Enhanced Feature Cards with Military UI */
+        .feature-card .military-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #DC143C;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .tactical-display {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #DC143C;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            color: #00ff00;
+            font-size: 12px;
+        }
+
+        /* Particle System */
+        .particle {
+            position: fixed;
+            width: 2px;
+            height: 2px;
+            background: #DC143C;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Mission Status Bar */
+        .mission-status {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+        }
+
+        .mission-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #DC143C, #ff4757);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* Radar Animation */
+        .radar-container {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100px;
+            height: 100px;
+            border: 2px solid rgba(220, 20, 60, 0.3);
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+
+        .radar-sweep {
+            position: absolute;
+            top: 48px;
+            left: 48px;
+            width: 2px;
+            height: 48px;
+            background: linear-gradient(to top, #DC143C, transparent);
+            transform-origin: bottom;
+            animation: radar-sweep 2s linear infinite;
+        }
+
+        @keyframes radar-sweep {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Typing Animation */
+        .typewriter {
+            overflow: hidden;
+            border-right: 3px solid #DC143C;
+            white-space: nowrap;
+            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #DC143C; }
+        }
     </style>
 </head>
 <body>
+    <!-- Mission Status Bar -->
+    <div class="mission-status">
+        <div class="mission-progress" id="missionProgress"></div>
+    </div>
+
+    <!-- Military Grid Overlay -->
+    <div class="military-grid"></div>
+
+    <!-- Neural Network Background -->
+    <div class="neural-network" id="neuralNetwork"></div>
+
+    <!-- Command Console Toggle -->
+    <button class="console-toggle" onclick="toggleConsole()">TACTICAL HUB</button>
+
+    <!-- Command Console -->
+    <div class="command-console" id="commandConsole">
+        <div class="console-header">[ TIRAS COMMAND CONSOLE ]</div>
+        <div id="consoleOutput"></div>
+    </div>
+
+    <!-- AI Status Indicator -->
+    <div class="ai-status">
+        <span>AI SYSTEM: </span>
+        <span class="processing-dots" id="aiStatus">ANALYZING</span>
+    </div>
     <div class="container">
         <header>
+            <div class="radar-container">
+                <div class="radar-sweep"></div>
+            </div>
             <img src="TIRAS Logo_ Tactical Risk Assessment Shield.png" alt="TIRAS Logo" class="logo">
-            <h1>TIRAS</h1>
+            <h1 class="typewriter">TIRAS</h1>
             <p class="subtitle">Terrain Initiative for Risk Assessment and Safety</p>
+            <div class="tactical-display">
+                <div>SYSTEM STATUS: <span style="color: #00ff00;">OPERATIONAL</span></div>
+                <div>THREAT LEVEL: <span style="color: #ffff00;">MODERATE</span></div>
+                <div>AI PROCESSING: <span style="color: #00ff00;">ACTIVE</span></div>
+            </div>
         </header>
 
         <section class="hero">
             <h2>🛡️ Advanced Tactical Risk Assessment</h2>
             <p>
                 TIRAS provides comprehensive terrain analysis and risk assessment solutions for tactical operations. 
-                Our advanced systems help teams make informed decisions in challenging environments, ensuring 
+                Our advanced AI-powered systems help teams make informed decisions in challenging environments, ensuring 
                 mission success while prioritizing safety and operational effectiveness.
             </p>
+            <div class="tactical-display">
+                <div>MISSION BRIEFING: Tactical terrain analysis with AI-enhanced threat detection</div>
+                <div>CLEARANCE LEVEL: <span style="color: #DC143C;">CLASSIFIED</span></div>
+            </div>
         </section>
 
         <section class="features">
-            <div class="feature-card">
+            <div class="feature-card" data-module="terrain">
+                <div class="military-badge">ALPHA</div>
                 <div class="feature-icon">🗺️</div>
-                <h3>Terrain Analysis</h3>
-                <p>Advanced geographical and topographical analysis to identify optimal routes, potential hazards, and strategic advantages in any terrain.</p>
+                <h3>AI Terrain Analysis</h3>
+                <p>Advanced geographical and topographical analysis powered by machine learning algorithms to identify optimal routes, potential hazards, and strategic advantages in any terrain.</p>
+                <div class="tactical-display">
+                    <div>STATUS: <span style="color: #00ff00;">ONLINE</span></div>
+                    <div>ACCURACY: 97.3%</div>
+                </div>
             </div>
             
-            <div class="feature-card">
+            <div class="feature-card" data-module="risk">
+                <div class="military-badge">BRAVO</div>
                 <div class="feature-icon">⚠️</div>
-                <h3>Risk Assessment</h3>
-                <p>Comprehensive risk evaluation using real-time data and predictive analytics to anticipate and mitigate potential threats.</p>
+                <h3>Neural Risk Assessment</h3>
+                <p>Comprehensive risk evaluation using real-time data and AI predictive analytics to anticipate and mitigate potential threats with military-grade precision.</p>
+                <div class="tactical-display">
+                    <div>THREAT LEVEL: <span style="color: #ffff00;">MODERATE</span></div>
+                    <div>AI CONFIDENCE: 94.7%</div>
+                </div>
             </div>
             
-            <div class="feature-card">
+            <div class="feature-card" data-module="tactical">
+                <div class="military-badge">CHARLIE</div>
                 <div class="feature-icon">🎯</div>
-                <h3>Tactical Planning</h3>
-                <p>Strategic planning tools that integrate terrain data with mission objectives to optimize operational outcomes.</p>
+                <h3>Tactical AI Planning</h3>
+                <p>Strategic planning tools that integrate terrain data with mission objectives using advanced AI algorithms to optimize operational outcomes.</p>
+                <div class="tactical-display">
+                    <div>PLANNING MODE: <span style="color: #00ff00;">ACTIVE</span></div>
+                    <div>MISSION SUCCESS: 98.1%</div>
+                </div>
             </div>
             
-            <div class="feature-card">
+            <div class="feature-card" data-module="safety">
+                <div class="military-badge">DELTA</div>
                 <div class="feature-icon">🔒</div>
-                <h3>Safety Protocols</h3>
-                <p>Robust safety systems and protocols designed to protect personnel while maintaining operational effectiveness.</p>
+                <h3>Autonomous Safety Protocols</h3>
+                <p>Robust AI-driven safety systems and protocols designed to protect personnel while maintaining operational effectiveness through predictive analysis.</p>
+                <div class="tactical-display">
+                    <div>SAFETY STATUS: <span style="color: #00ff00;">SECURE</span></div>
+                    <div>PROTOCOLS: ACTIVE</div>
+                </div>
             </div>
             
-            <div class="feature-card">
+            <div class="feature-card" data-module="data">
+                <div class="military-badge">ECHO</div>
                 <div class="feature-icon">📡</div>
-                <h3>Real-Time Data</h3>
-                <p>Live data integration from multiple sources providing up-to-the-minute intelligence for dynamic decision making.</p>
+                <h3>Real-Time AI Data</h3>
+                <p>Live data integration from multiple sources providing up-to-the-minute intelligence processed by advanced AI for dynamic decision making.</p>
+                <div class="tactical-display">
+                    <div>DATA STREAM: <span style="color: #00ff00;">ACTIVE</span></div>
+                    <div>PROCESSING: 847 MB/s</div>
+                </div>
             </div>
             
-            <div class="feature-card">
+            <div class="feature-card" data-module="response">
+                <div class="military-badge">FOXTROT</div>
                 <div class="feature-icon">⚡</div>
-                <h3>Rapid Response</h3>
-                <p>Quick deployment capabilities and rapid assessment tools for time-critical operations and emergency situations.</p>
+                <h3>AI Rapid Response</h3>
+                <p>Quick deployment capabilities and rapid assessment tools powered by AI for time-critical operations and emergency situations with tactical precision.</p>
+                <div class="tactical-display">
+                    <div>RESPONSE TIME: <span style="color: #00ff00;">< 30s</span></div>
+                    <div>AI DEPLOYMENT: READY</div>
+                </div>
             </div>
         </section>
 
@@ -407,9 +722,345 @@
                 © 2024 TIRAS - Terrain Initiative for Risk Assessment and Safety. All rights reserved.
             </p>
             <p class="footer-text" style="margin-top: 10px; font-size: 0.8rem;">
-                Enhancing tactical operations through advanced terrain analysis and risk assessment.
+                Enhancing tactical operations through advanced AI-powered terrain analysis and risk assessment.
             </p>
         </footer>
     </div>
+
+    <script>
+        // Global variables
+        let consoleOpen = false;
+        let missionProgress = 0;
+        let aiStates = ['ANALYZING', 'PROCESSING', 'COMPUTING', 'SCANNING', 'EVALUATING'];
+        let currentAiState = 0;
+        let particleSystem = [];
+        let neuralNodes = [];
+        let neuralConnections = [];
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeNeuralNetwork();
+            initializeParticleSystem();
+            startMissionProgress();
+            startAiStatusUpdates();
+            startConsoleActivity();
+            initializeFeatureCards();
+        });
+
+        // Neural Network Animation
+        function initializeNeuralNetwork() {
+            const network = document.getElementById('neuralNetwork');
+            const nodeCount = 20;
+            const connectionCount = 15;
+
+            // Create neural nodes
+            for (let i = 0; i < nodeCount; i++) {
+                const node = document.createElement('div');
+                node.className = 'neural-node';
+                node.style.left = Math.random() * 100 + '%';
+                node.style.top = Math.random() * 100 + '%';
+                node.style.animationDelay = Math.random() * 3 + 's';
+                network.appendChild(node);
+                neuralNodes.push(node);
+            }
+
+            // Create connections between nodes
+            for (let i = 0; i < connectionCount; i++) {
+                const connection = document.createElement('div');
+                connection.className = 'neural-connection';
+                
+                const startNode = neuralNodes[Math.floor(Math.random() * neuralNodes.length)];
+                const endNode = neuralNodes[Math.floor(Math.random() * neuralNodes.length)];
+                
+                const startRect = startNode.getBoundingClientRect();
+                const endRect = endNode.getBoundingClientRect();
+                
+                const length = Math.sqrt(
+                    Math.pow(endRect.left - startRect.left, 2) + 
+                    Math.pow(endRect.top - startRect.top, 2)
+                );
+                
+                connection.style.width = length + 'px';
+                connection.style.left = startRect.left + 'px';
+                connection.style.top = startRect.top + 'px';
+                connection.style.transformOrigin = '0 50%';
+                connection.style.transform = `rotate(${Math.atan2(
+                    endRect.top - startRect.top, 
+                    endRect.left - startRect.left
+                )}rad)`;
+                connection.style.animationDelay = Math.random() * 2 + 's';
+                
+                network.appendChild(connection);
+                neuralConnections.push(connection);
+            }
+        }
+
+        // Particle System
+        function initializeParticleSystem() {
+            setInterval(createParticle, 2000);
+        }
+
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.top = Math.random() * window.innerHeight + 'px';
+            particle.style.opacity = Math.random() * 0.5 + 0.3;
+            
+            document.body.appendChild(particle);
+            
+            // Animate particle
+            let x = parseFloat(particle.style.left);
+            let y = parseFloat(particle.style.top);
+            const dx = (Math.random() - 0.5) * 2;
+            const dy = (Math.random() - 0.5) * 2;
+            
+            const animate = () => {
+                x += dx;
+                y += dy;
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+                
+                if (x < 0 || x > window.innerWidth || y < 0 || y > window.innerHeight) {
+                    particle.remove();
+                } else {
+                    requestAnimationFrame(animate);
+                }
+            };
+            
+            animate();
+            
+            // Remove particle after 10 seconds
+            setTimeout(() => {
+                if (particle.parentNode) {
+                    particle.remove();
+                }
+            }, 10000);
+        }
+
+        // Command Console Functions
+        function toggleConsole() {
+            const console = document.getElementById('commandConsole');
+            consoleOpen = !consoleOpen;
+            
+            if (consoleOpen) {
+                console.classList.add('active');
+                updateConsoleOutput();
+            } else {
+                console.classList.remove('active');
+            }
+        }
+
+        function updateConsoleOutput() {
+            const output = document.getElementById('consoleOutput');
+            const commands = [
+                'INITIALIZING TIRAS SYSTEMS...',
+                'LOADING AI NEURAL NETWORKS...',
+                'ESTABLISHING SECURE CONNECTION...',
+                'TERRAIN ANALYSIS MODULE: ONLINE',
+                'RISK ASSESSMENT PROTOCOLS: ACTIVE',
+                'TACTICAL PLANNING SYSTEMS: READY',
+                'SAFETY PROTOCOLS: ENGAGED',
+                'REAL-TIME DATA STREAM: CONNECTED',
+                'RAPID RESPONSE TEAM: STANDBY',
+                'ALL SYSTEMS OPERATIONAL'
+            ];
+            
+            output.innerHTML = '';
+            commands.forEach((command, index) => {
+                setTimeout(() => {
+                    const line = document.createElement('div');
+                    line.className = 'status-line';
+                    line.style.animationDelay = '0s';
+                    line.textContent = `> ${command}`;
+                    output.appendChild(line);
+                }, index * 500);
+            });
+        }
+
+        function startConsoleActivity() {
+            setInterval(() => {
+                if (consoleOpen) {
+                    const output = document.getElementById('consoleOutput');
+                    const activities = [
+                        'SCANNING PERIMETER...',
+                        'UPDATING THREAT ASSESSMENT...',
+                        'PROCESSING TERRAIN DATA...',
+                        'AI ANALYSIS COMPLETE',
+                        'MISSION PARAMETERS UPDATED',
+                        'SAFETY CHECK INITIATED',
+                        'DATA STREAM OPTIMIZED'
+                    ];
+                    
+                    const line = document.createElement('div');
+                    line.className = 'status-line';
+                    line.style.color = '#00ff00';
+                    line.textContent = `> ${activities[Math.floor(Math.random() * activities.length)]}`;
+                    output.appendChild(line);
+                    
+                    // Keep only last 15 lines
+                    while (output.children.length > 15) {
+                        output.removeChild(output.firstChild);
+                    }
+                }
+            }, 3000);
+        }
+
+        // Mission Progress Tracking
+        function startMissionProgress() {
+            setInterval(() => {
+                missionProgress += Math.random() * 2;
+                if (missionProgress > 100) missionProgress = 0;
+                
+                const progressBar = document.getElementById('missionProgress');
+                progressBar.style.width = missionProgress + '%';
+            }, 100);
+        }
+
+        // AI Status Updates
+        function startAiStatusUpdates() {
+            setInterval(() => {
+                currentAiState = (currentAiState + 1) % aiStates.length;
+                document.getElementById('aiStatus').textContent = aiStates[currentAiState];
+            }, 2000);
+        }
+
+        // Interactive Feature Cards
+        function initializeFeatureCards() {
+            const cards = document.querySelectorAll('.feature-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const module = card.getAttribute('data-module');
+                    simulateModuleActivation(module, card);
+                });
+                
+                // Add hover effects for tactical displays
+                card.addEventListener('mouseenter', () => {
+                    const display = card.querySelector('.tactical-display');
+                    if (display) {
+                        display.style.borderColor = '#DC143C';
+                        display.style.boxShadow = '0 0 10px rgba(220, 20, 60, 0.5)';
+                    }
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    const display = card.querySelector('.tactical-display');
+                    if (display) {
+                        display.style.borderColor = '#DC143C';
+                        display.style.boxShadow = 'none';
+                    }
+                });
+            });
+        }
+
+        function simulateModuleActivation(module, card) {
+            const badge = card.querySelector('.military-badge');
+            const display = card.querySelector('.tactical-display');
+            
+            // Flash the badge
+            badge.style.backgroundColor = '#00ff00';
+            badge.textContent = 'ACTIVE';
+            
+            // Update display with activation message
+            const statusLines = display.querySelectorAll('div');
+            statusLines.forEach(line => {
+                line.style.color = '#00ff00';
+            });
+            
+            // Add activation message
+            const activationMsg = document.createElement('div');
+            activationMsg.textContent = 'MODULE ACTIVATED';
+            activationMsg.style.color = '#00ff00';
+            activationMsg.style.fontWeight = 'bold';
+            display.appendChild(activationMsg);
+            
+            // Reset after 3 seconds
+            setTimeout(() => {
+                badge.style.backgroundColor = '#DC143C';
+                badge.textContent = badge.textContent.split(' ')[0]; // Reset to original text
+                statusLines.forEach(line => {
+                    line.style.color = '';
+                });
+                if (activationMsg.parentNode) {
+                    activationMsg.remove();
+                }
+            }, 3000);
+        }
+
+        // Tactical Data Stream Simulation
+        function updateTacticalDisplays() {
+            const displays = document.querySelectorAll('.tactical-display');
+            
+            displays.forEach(display => {
+                const dataLines = display.querySelectorAll('div');
+                dataLines.forEach(line => {
+                    if (line.textContent.includes('PROCESSING:')) {
+                        const speed = Math.floor(Math.random() * 500) + 500;
+                        line.innerHTML = `PROCESSING: ${speed} MB/s`;
+                    }
+                    if (line.textContent.includes('ACCURACY:')) {
+                        const accuracy = (Math.random() * 3 + 95).toFixed(1);
+                        line.innerHTML = `ACCURACY: ${accuracy}%`;
+                    }
+                    if (line.textContent.includes('AI CONFIDENCE:')) {
+                        const confidence = (Math.random() * 5 + 90).toFixed(1);
+                        line.innerHTML = `AI CONFIDENCE: ${confidence}%`;
+                    }
+                });
+            });
+        }
+
+        // Start tactical data updates
+        setInterval(updateTacticalDisplays, 5000);
+
+        // Add scanning effect to radar
+        function enhanceRadarEffect() {
+            const radar = document.querySelector('.radar-container');
+            if (radar) {
+                setInterval(() => {
+                    radar.style.borderColor = radar.style.borderColor === 'rgba(220, 20, 60, 0.8)' 
+                        ? 'rgba(220, 20, 60, 0.3)' 
+                        : 'rgba(220, 20, 60, 0.8)';
+                }, 1000);
+            }
+        }
+
+        // Initialize radar enhancement
+        enhanceRadarEffect();
+
+        // Add keyboard shortcuts for tactical operations
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.shiftKey) {
+                switch(e.key) {
+                    case 'C':
+                        e.preventDefault();
+                        toggleConsole();
+                        break;
+                    case 'A':
+                        e.preventDefault();
+                        // Activate all modules
+                        document.querySelectorAll('.feature-card').forEach(card => {
+                            card.click();
+                        });
+                        break;
+                }
+            }
+        });
+
+        // Add responsive particle density
+        function adjustParticleSystem() {
+            const screenWidth = window.innerWidth;
+            const density = screenWidth > 1200 ? 2000 : screenWidth > 768 ? 3000 : 5000;
+            
+            clearInterval(particleSystem.interval);
+            particleSystem.interval = setInterval(createParticle, density);
+        }
+
+        // Adjust particle system on resize
+        window.addEventListener('resize', adjustParticleSystem);
+        adjustParticleSystem();
+
+    </script>
 </body>
 </html> 
